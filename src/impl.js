@@ -362,20 +362,11 @@ const fillBox = (id, x0) => {
         for(const box of winnerBoxes)  
             gridContainer.childNodes[box].firstChild.style.color = '#FF0000';
 
-        if(!ticTacToe.selectedLetter) {
-            if(gridBoxesFill[winnerBoxes[0]] === 1)
-                ticTacToe.scores.DOMElements.player.textContent = ++ticTacToe.scores.player;  
-        
-            else 
-                ticTacToe.scores.DOMElements.cpu.textContent = ++ticTacToe.scores.cpu;
-        }
-        else {
-            if(gridBoxesFill[winnerBoxes[0]] === 1)
-                ticTacToe.scores.DOMElements.player.textContent = ++ticTacToe.scores.player;  
-        
-            else 
-                ticTacToe.scores.DOMElements.cpu.textContent = ++ticTacToe.scores.cpu;
-        }
+        if(gridBoxesFill[winnerBoxes[0]] === 1)
+            ticTacToe.scores.DOMElements.player.textContent = ++ticTacToe.scores.player;  
+    
+        else 
+            ticTacToe.scores.DOMElements.cpu.textContent = ++ticTacToe.scores.cpu;
 
         setTimeout(resetTicTacToeRound, 2000);
         return;
