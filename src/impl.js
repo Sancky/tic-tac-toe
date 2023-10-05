@@ -18,7 +18,8 @@ let
         },
         turn: 1,
         selectedLetter: null,
-        filledBoxesCount: 0
+        filledBoxesCount: 0,
+        endRound: false
     },
 
     darkMode = false,
@@ -160,7 +161,7 @@ const pagesContent = {
                 element.className = 'grid-items';
 
                 element.addEventListener('click', () => {
-                    if(ticTacToe.filledBoxesCount === 9)
+                    if(ticTacToe.filledBoxesCount === 9 || ticTacToe.endRound)
                         return;
 
                     if(ticTacToe.turn === 1)
@@ -367,6 +368,8 @@ const fillBox = (id, x0) => {
             ticTacToe.scores.DOMElements.cpu.textContent = ++ticTacToe.scores.cpu;
 
         setTimeout(resetTicTacToeRound, 2000);
+
+        ticTacToe.endRound = true;
         return;
     }
 
@@ -418,6 +421,8 @@ const resetTicTacToeRound = () => {
 
     if(ticTacToe.turn === 2) 
         setTimeout(cpuSelectBox, 500);
+
+    ticTacToe.endRound = false;
 }
 
 /* 
