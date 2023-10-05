@@ -18,8 +18,6 @@ let
         },
         turn: 1,
         selectedLetter: null,
-        time: null,
-        round: 1,
         filledBoxesCount: 0
     },
 
