@@ -174,7 +174,7 @@ const pagesContent = {
                 gridContainer.appendChild(element);
             }
 
-            ticTacToe.turn = Math.floor(1 + Math.random() * 2);
+            ticTacToe.turn = 1 + Math.floor(Math.random() * 2);
 
             if(ticTacToe.turn === 2) 
                 setTimeout(cpuSelectBox, 500);
@@ -399,10 +399,10 @@ const checkWinnerBoxes = () => {
 }
 
 const cpuSelectBox = () => {
-    let random = Math.floor(0 + Math.random() * 9);
+    let random = Math.floor(Math.random() * 9);
 
     while(gridBoxesFill[random] !== null) 
-        random = Math.floor(0 + Math.random() * 9);
+        random = Math.floor(Math.random() * 9);
     
     fillBox(random, ticTacToe.turn);
 }
@@ -417,7 +417,7 @@ const resetTicTacToeRound = () => {
 
     ticTacToe.filledBoxesCount = 0;
 
-    ticTacToe.turn = Math.floor(1 + Math.random() * 2);
+    ticTacToe.turn = 1 + Math.floor(Math.random() * 2);
 
     if(ticTacToe.turn === 2) 
         setTimeout(cpuSelectBox, 500);
