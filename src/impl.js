@@ -155,18 +155,22 @@ const pagesContent = {
                 'border-bottom: none; border-right: none;'
             ];
 
+            gridContainer.addEventListener('click', (event) => {
+                if(event.target.internalItemID === undefined)
+                    return;
+
+                if(ticTacToe.filledBoxesCount === 9 || ticTacToe.endRound)
+                    return;
+
+                if(ticTacToe.turn === 1)
+                    fillBox(event.target.internalItemID, ticTacToe.turn); 
+            });
+
             for(let i = 0, element; i < 9; ++i) {
                 element = document.createElement('div');
 
                 element.className = 'grid-items';
-
-                element.addEventListener('click', () => {
-                    if(ticTacToe.filledBoxesCount === 9 || ticTacToe.endRound)
-                        return;
-
-                    if(ticTacToe.turn === 1)
-                        fillBox(i, ticTacToe.turn); //TODO: improvements
-                }); 
+                element.internalItemID = i;
 
                 if(i !== 4)
                     element.style = gridBordersStyles[i];
