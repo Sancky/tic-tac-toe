@@ -207,7 +207,7 @@ body {
     font-family: Helvetica;
 }
 
-@media screen and (max-width: 726px) {
+@media (max-width: 726px) {
     .grid-items {
         width: 150px;
         height: 150px;
