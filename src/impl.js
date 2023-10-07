@@ -119,18 +119,12 @@ const pagesContent = {
                 orderedListElement.appendChild(tempElement);
             }
 
-            tempElement = document.createElement('div');
+            tempElement = document.createElement('button');
 
-            tempElement.className = 'return-back';
+            tempElement.className = 'fa-solid fa-check return-back';
             tempElement.addEventListener('click', () => switchPages('Menu'));
 
-            const iconElement = document.createElement('i');
-
-            iconElement.className = 'fa-solid fa-check';
-
             elementContainer.appendChild(tempElement);
-
-            tempElement.appendChild(iconElement);
         }
     },
     Game: {
@@ -306,34 +300,29 @@ const switchPages = (page = '') => {
 
 const createDarkModeButton = () => {
     let 
-        divElement = document.createElement('div'),
-        iconElement = document.createElement('i'),
+        buttonElement = document.createElement('button'),
         bodyElement = document.body;
 
-    divElement.className = 'dark-mode-icon';
+    buttonElement.className = 'dark-mode-icon fa-solid fa-moon';
 
-    bodyElement.appendChild(divElement);
+    bodyElement.appendChild(buttonElement);
 
-    iconElement.className = 'fa-solid fa-moon';
-
-    divElement.addEventListener('click', () => {
+    buttonElement.addEventListener('click', () => {
         if(!darkMode) {
-            iconElement.className = 'fa-solid fa-sun';
+            buttonElement.classList.replace('fa-moon', 'fa-sun');
 
             bodyElement.classList.replace('white-mode', 'dark-mode');
 
             darkMode = true;
         }
         else {
-            iconElement.className = 'fa-solid fa-moon';
+            buttonElement.classList.replace('fa-sun', 'fa-moon');
 
             bodyElement.classList.replace('dark-mode', 'white-mode');
 
             darkMode = false;
         }
     });
-
-    divElement.appendChild(iconElement);
 }
 
 const fillBox = (id, x0) => { 
