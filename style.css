@@ -141,6 +141,10 @@ body {
     color: var(--color);  
 }
 
+.help-section > ol {
+    margin-right: 10px;
+}
+
 .help-section > h1 {
     text-align: center;
     margin: 10px;
