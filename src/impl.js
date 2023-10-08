@@ -41,7 +41,7 @@ const pagesContent = {
             bodyElement.appendChild(globalContentContainer);
 
             let tempElement = document.createElement('div');
-            tempElement.className = 'heading-title';
+            tempElement.className = 'heading-title-menu';
             tempElement.textContent = 'Tic-Tac-Toe';
 
             globalContentContainer.appendChild(tempElement);
@@ -235,7 +235,7 @@ const pagesContent = {
         pageLoadContent: () => {
             const headingTitle = document.createElement('div');
 
-            headingTitle.className = 'heading-title';
+            headingTitle.className = 'heading-title-select';
             headingTitle.textContent = 'Choose your element:';
 
             globalContentContainer.appendChild(headingTitle);
