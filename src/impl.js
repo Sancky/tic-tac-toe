@@ -19,7 +19,11 @@ let
         turn: 1,
         selectedLetter: null,
         filledBoxesCount: 0,
-        endRound: false
+        endRound: false,
+        difficulty: {
+            level: 0,
+            names: ['Easy', 'Medium', 'Hard']
+        }
     },
 
     darkMode = false,
@@ -57,8 +61,7 @@ const pagesContent = {
                     OnClick: () => switchPages('ChooseXor0')
                 }, 
                 {
-                    Name: 'Settings',
-                    OnClick: () => switchPages('Settings')
+                    Name: 'Difficulty: Easy'
                 }, 
                 {
                     Name: 'Help',
@@ -71,15 +74,20 @@ const pagesContent = {
 
                 tempElement.className = 'menu-buttons';
                 tempElement.textContent = buttonsProperties[i].Name;
-                tempElement.addEventListener('click', buttonsProperties[i].OnClick);
+
+                if(i !== 1)
+                    tempElement.addEventListener('click', buttonsProperties[i].OnClick);
+
+                else {
+                    tempElement.addEventListener('click', (event) => {
+                        ticTacToe.difficulty.level = (ticTacToe.difficulty.level + 1) % 3;
+                        
+                        event.target.textContent = `Difficulty: ${ticTacToe.difficulty.names[ticTacToe.difficulty.level]}`;
+                    });
+                }
 
                 buttonsContainer.appendChild(tempElement);
             }
-        }
-    },
-    Settings: {
-        pageLoadContent: () => {
-
         }
     },
     Help: {
@@ -391,13 +399,70 @@ const checkWinnerBoxes = () => {
     return null;
 }
 
-const cpuSelectBox = () => {
-    let random = Math.floor(Math.random() * 9);
+0, 1, 2
 
-    while(gridBoxesFill[random] !== null) 
-        random = Math.floor(Math.random() * 9);
-    
-    fillBox(random, ticTacToe.turn);
+
+const cpuSelectBox = () => {
+    const 
+        checkCombinations = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], 
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], 
+            [0, 4, 8], [2, 4, 6]             
+        ],
+        tryCombinations = [
+            [0, 1, 2], [0, 2, 1], 
+            [1, 0, 2], [1, 2, 0],
+            [2, 0, 1], [2, 1, 0]
+        ];
+
+    const chooseRandomBox = () => {
+        let random = Math.floor(Math.random() * 9);
+
+        while(gridBoxesFill[random] !== null) 
+            random = Math.floor(Math.random() * 9);
+        
+        fillBox(random, ticTacToe.turn);
+    }
+
+    console.log(ticTacToe.difficulty.names[ticTacToe.difficulty.level]);
+
+    switch(ticTacToe.difficulty.level) {
+        case 0: { 
+            chooseRandomBox();
+            break;
+        }
+        case 1: { 
+            if(Math.floor(Math.random() * 100) < 75) {
+                for(let index = 0; index < checkCombinations.length; ++index) {                
+                    for(const [a, b, c] of tryCombinations) {
+                        if(gridBoxesFill[checkCombinations[index][a]] === 1 && gridBoxesFill[checkCombinations[index][b]] === 1 && gridBoxesFill[checkCombinations[index][c]] === null) 
+                            return fillBox(checkCombinations[index][c], ticTacToe.turn);
+                    }
+                }
+            }
+
+            chooseRandomBox();
+            break;
+        }
+        case 2: { 
+            for(let index = 0; index < checkCombinations.length; ++index) {  
+                for(const [a, b, c] of tryCombinations) {
+                    if(gridBoxesFill[checkCombinations[index][a]] === 2 && gridBoxesFill[checkCombinations[index][b]] === 2 && gridBoxesFill[checkCombinations[index][c]] === null) 
+                        return fillBox(checkCombinations[index][c], ticTacToe.turn);
+                }
+            }
+
+            for(let index = 0; index < checkCombinations.length; ++index) {
+                for(const [a, b, c] of tryCombinations) {
+                    if(gridBoxesFill[checkCombinations[index][a]] === 1 && gridBoxesFill[checkCombinations[index][b]] === 1 && gridBoxesFill[checkCombinations[index][c]] === null) 
+                        return fillBox(checkCombinations[index][c], ticTacToe.turn);
+                }
+            }
+
+            chooseRandomBox();
+            break;
+        }
+    }
 }
 
 const resetTicTacToeRound = () => {
