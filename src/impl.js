@@ -399,9 +399,6 @@ const checkWinnerBoxes = () => {
     return null;
 }
 
-0, 1, 2
-
-
 const cpuSelectBox = () => {
     const 
         checkCombinations = [
@@ -423,8 +420,6 @@ const cpuSelectBox = () => {
         
         fillBox(random, ticTacToe.turn);
     }
-
-    console.log(ticTacToe.difficulty.names[ticTacToe.difficulty.level]);
 
     switch(ticTacToe.difficulty.level) {
         case 0: { 
