@@ -11,9 +11,7 @@
 body {
     margin: 0;
     background-color: var(--bg-color);
-    transition-property: background-color;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 500ms;
+    transition: background-color .5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #flex-container {
@@ -110,9 +108,7 @@ body {
     text-align: center;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 18px;
-    transition: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transition-property: transform;
-    transition-duration: 200ms;
+    transition: transform .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
 }
 
@@ -168,9 +164,7 @@ body {
     text-align: center;
     width: 10rem;
     height: 10rem;
-    transition: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transition-property: transform;
-    transition-duration: 200ms;
+    transition: transform .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
 }
 
