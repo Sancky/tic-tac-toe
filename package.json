@@ -1,0 +1,26 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "An Tic-Tac-Toe project for learning process.",
+  "main": "./src/impl.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sancky/tic-tac-toe.git"
+  },
+  "author": "Sancky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sancky/tic-tac-toe/issues"
+  },
+  "homepage": "https://github.com/Sancky/tic-tac-toe#readme",
+  "devDependencies": {
+    "css-loader": "^6.8.1",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
+}
