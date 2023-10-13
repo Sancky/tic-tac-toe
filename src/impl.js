@@ -365,7 +365,18 @@ const fillBox = (id, x0) => {
         else 
             ticTacToe.scores.DOMElements.cpu.textContent = ++ticTacToe.scores.cpu;
 
-        setTimeout(resetTicTacToeRound, 2000);
+        let callsRepeated = 0;
+
+        const flashBoxesElementsInterval = setInterval(() => {
+            for(const box of winnerBoxes)  
+                gridContainer.childNodes[box].firstChild.style.opacity = `${callsRepeated % 2 * 100}`;
+
+            if(callsRepeated++ === 8) {
+                clearInterval(flashBoxesElementsInterval);
+
+                resetTicTacToeRound();
+            }
+        }, 500);
 
         ticTacToe.endRound = true;
         return;
