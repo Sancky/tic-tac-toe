@@ -185,6 +185,10 @@ body {
     width: auto;
 }
 
+.game-info-container > div:nth-child(-n + 2) {
+    margin-right: 10px;
+}
+
 .game-info-text {
     display: flex;
     flex-direction: column;
@@ -197,7 +201,6 @@ body {
     font-size: 1rem;
     font-family: Helvetica;
     font-weight: bolder;
-    margin-right: 10px;
 }
 
 .game-info-score {
