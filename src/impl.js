@@ -63,7 +63,12 @@ const pagesContent = {
                     OnClick: () => switchPages('ChooseXor0')
                 }, 
                 {
-                    Name: 'Difficulty: Easy'
+                    Name: 'Difficulty: Easy',
+                    OnClick: (event) => {
+                        ticTacToe.difficulty.level = (ticTacToe.difficulty.level + 1) % 3;
+                        
+                        event.target.textContent = `Difficulty: ${ticTacToe.difficulty.names[ticTacToe.difficulty.level]}`;
+                    }
                 }, 
                 {
                     Name: 'Help',
@@ -76,17 +81,7 @@ const pagesContent = {
 
                 tempElement.className = 'menu-buttons';
                 tempElement.textContent = buttonsProperties[i].Name;
-
-                if(i !== 1)
-                    tempElement.addEventListener('click', buttonsProperties[i].OnClick);
-
-                else {
-                    tempElement.addEventListener('click', (event) => {
-                        ticTacToe.difficulty.level = (ticTacToe.difficulty.level + 1) % 3;
-                        
-                        event.target.textContent = `Difficulty: ${ticTacToe.difficulty.names[ticTacToe.difficulty.level]}`;
-                    });
-                }
+                tempElement.addEventListener('click', buttonsProperties[i].OnClick);
 
                 buttonsContainer.appendChild(tempElement);
             }
