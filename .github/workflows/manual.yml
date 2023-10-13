@@ -1,0 +1,12 @@
+name: Webpack build workflow
+
+on:
+  push: 
+    branches: main
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+
+    steps:
+    - run: npm run build
