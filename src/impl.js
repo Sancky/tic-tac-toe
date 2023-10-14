@@ -369,7 +369,7 @@ const fillBox = (id, x0) => {
 
         const flashBoxesElementsInterval = setInterval(() => {
             for(const box of winnerBoxes)  
-                gridContainer.childNodes[box].firstChild.style.opacity = `${callsRepeated % 2 * 100}`;
+                gridContainer.childNodes[box].firstChild.style.visibility = ['hidden', 'visible'][callsRepeated % 2];
 
             if(callsRepeated++ === 8) {
                 clearInterval(flashBoxesElementsInterval);
