@@ -265,21 +265,23 @@ const pagesContent = {
 
             flexContainer.appendChild(select0);
 
-            flexContainer.addEventListener('mouseover', (event) => {
-                if(event.target === selectX) 
-                    select0.classList.add('select-scale');
-                
-                else if(event.target === select0) 
-                    selectX.classList.add('select-scale');
-            }); 
-
-            flexContainer.addEventListener('mouseout', (event) => {
-                if(event.target === selectX) 
-                    select0.classList.remove('select-scale');
-                
-                else if(event.target === select0) 
-                    selectX.classList.remove('select-scale');
-            });
+            if(window.matchMedia('(min-width: 850px)').matches) {
+                flexContainer.addEventListener('mouseover', (event) => {
+                    if(event.target === selectX) 
+                        select0.classList.add('select-scale');
+                    
+                    else if(event.target === select0) 
+                        selectX.classList.add('select-scale');
+                }); 
+    
+                flexContainer.addEventListener('mouseout', (event) => {
+                    if(event.target === selectX) 
+                        select0.classList.remove('select-scale');
+                    
+                    else if(event.target === select0) 
+                        selectX.classList.remove('select-scale');
+                });
+            }
             
             flexContainer.addEventListener('click', (event) => {
                 if(event.target === selectX) {
