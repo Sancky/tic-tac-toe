@@ -28,7 +28,7 @@ let
         }
     },
 
-    darkMode = false,
+    darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches,
 
     gridContainer = null;
 
@@ -310,7 +310,14 @@ const createDarkModeButton = () => {
         buttonElement = document.createElement('button'),
         bodyElement = document.body;
 
-    buttonElement.className = 'dark-mode-icon fa-solid fa-moon';
+    if(darkMode) {
+        buttonElement.className = 'dark-mode-icon fa-solid fa-sun';
+        bodyElement.classList.replace('white-mode', 'dark-mode');
+    }
+    else {
+        buttonElement.className = 'dark-mode-icon fa-solid fa-moon';
+        bodyElement.classList.replace('dark-mode', 'white-mode');
+    }
 
     bodyElement.appendChild(buttonElement);
 
